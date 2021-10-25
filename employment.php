@@ -29,11 +29,9 @@
     switch($method){
         case "GET":
             if(isset($id)){
-                //Skriver ut en specifik kurs
                 $response = $employment->getSpecifikEmployment($id); 
             }
             else{
-                //Skriver ut alla kurser
                 $response = $employment->getEmployments();
             }
             break;

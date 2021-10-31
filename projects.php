@@ -40,8 +40,16 @@
             
         case "POST":
             http_response_code(201); // Skapat
-            $response = array("Message" => "Project Created");
-            $project->addProject($title, $project_desc, $image, $url);
+        
+            if(!($place && $project_desc && $image && $url)){
+                $response = array("Message" => "Alla fält måste skickas med"); 
+            }
+
+            else{
+                $project->addProject($title, $project_desc, $image, $url);
+                $response = array("Message" => "Project Created"); 
+            }
+
             break;
 
         case "PUT":
@@ -52,9 +60,14 @@
             }
             else{
                 // Om id finns så kallas nedanstående funktion och meddelande skrivs ut till användaren
-                http_response_code(202);
-                $project->updateProject($id, $title, $project_desc ,$image,$url);
-                $response = array("Message" => "Project with id = $id is updated");
+                if(!($place && $project_desc && $image && $url)){
+                    $response = array("Message" => "Alla fält måste skickas med"); 
+                }
+                else {
+                    $project->updateProject($id, $title, $project_desc ,$image,$url);
+                    $response = array("Message" => "Project with id = $id is updated");
+                    http_response_code(202);
+                }
             }
             break;
 

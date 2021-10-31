@@ -1,18 +1,18 @@
 <?php
 
 class Database{
-    /*private $dbHost = "studentmysql.miun.se";
+    private $dbHost = "studentmysql.miun.se";
     private $dbName = "asha1900";
     private $dbUser = "asha1900";
     private $dbPass = "bsan1x7m";
-    public $conn;*/
-
+    public $conn;
+/*
     private $dbHost = "localhost";
-    private $dbName = "test";
+    private $dbName = "projekt";
     private $dbUser = "admin";
     private $dbPass = "password";
     public $conn;
-
+*/
 
     // Funktion för att ansluta till databsen med ovanstående uppgifter
     public function connect(){

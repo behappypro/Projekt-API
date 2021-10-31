@@ -40,8 +40,16 @@
             
         case "POST":
             http_response_code(201); // Skapat
-            $response = array("Message" => "Employment Created");
-            $employment->addEmployment($place, $title, $start_year, $end_year);
+            
+            if(!($place && $title && $start_year && $end_year)){
+                $response = array("Message" => "Alla fält måste skickas med"); 
+            }
+
+            else{
+                $employment->addEmployment($place, $title, $start_year, $end_year);
+                $response = array("Message" => "Employment Created"); 
+            }
+
             break;
 
         case "PUT":
@@ -51,24 +59,30 @@
                 $response = array("Message" => "No ID is sent");
             }
             else{
+                if(!($place && $title && $start_year && $end_year)){
+                    $response = array("Message" => "Alla fält måste skickas med"); 
+                }
+                
                 // Om id finns så kallas nedanstående funktion och meddelande skrivs ut till användaren
-                http_response_code(202);
-                $employment->updateEmployment($id, $place, $title, $start_year,$end_year);
-                $response = array("Message" => "Post with id = $id is updated");
+                else{
+                    $employment->updateEmployment($id, $place, $title, $start_year,$end_year);
+                    $response = array("Message" => "Post with id = $id is updated");
+                    http_response_code(202);
+                }
             }
             break;
 
         case "DELETE":
             // Om inget id är angivet, skriver ut felmeddelande
             if(!isset($id)){
-                http_response_code(400);
                 $response = array("Message" => "No id is sent");
+                http_response_code(400);
             }
             else{
                 // Om id finns så kallas nedanstående funktion och meddelande skrivs ut till användaren
-                http_response_code(200);
                 $response = array("Message" => "Post with id = $id is deleted");
                 $employment->deleteEmployment($id);
+                http_response_code(200);
             }
             break;
     }

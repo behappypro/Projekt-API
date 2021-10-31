@@ -28,17 +28,10 @@ class Education{
             return $result = $sql->fetch(PDO::FETCH_ASSOC);  
     }
     // Funktion för att lägga till en kurs
-    public function addEducation($edu_name, $program_name,$start_year,$end_year){
-        /*
-        $data = [
-            'code' => 'test',
-            'name' => 'test',
-            'progression' => 'A',
-            'course_syllabus' => 'test',
-        ];
-        */
+    public function addEducation($edu_name, $program_name, $start_year, $end_year){
+
         // SQL-fråga som skriver till databasen med värden
-        $sql = "INSERT INTO education (edu_name, program_name, start_year,end_year)
+        $sql = "INSERT INTO education (edu_name, program_name, start_year, end_year)
         VALUES ('$edu_name', '$program_name','$start_year','$end_year')";
         // use exec() because no results are returned
         $this->conn->exec($sql);

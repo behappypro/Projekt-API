@@ -29,14 +29,6 @@ class Employment{
     }
     // Funktion för att lägga till en kurs
     public function addEmployment($place, $title,$start_year,$end_year){
-        /*
-        $data = [
-            'code' => 'test',
-            'name' => 'test',
-            'progression' => 'A',
-            'course_syllabus' => 'test',
-        ];
-        */
         // SQL-fråga som skriver till databasen med värden
         $sql = "INSERT INTO employment (place, title, start_year,end_year)
         VALUES ('$place', '$title','$start_year','$end_year')";

@@ -29,9 +29,11 @@
     switch($method){
         case "GET":
             if(isset($id)){
+                //Skriver ut en specifik kurs
                 $response = $employment->getSpecifikEmployment($id); 
             }
             else{
+                //Skriver ut alla kurser
                 $response = $employment->getEmployments();
             }
             break;
@@ -59,6 +61,7 @@
             else{
                 if(!($place && $title && $start_year && $end_year)){
                     $response = array("Message" => "Alla fält måste skickas med"); 
+                    http_response_code(419); // Saknar vissa argument
                 }
                 
                 // Om id finns så kallas nedanstående funktion och meddelande skrivs ut till användaren

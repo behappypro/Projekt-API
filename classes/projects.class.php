@@ -29,14 +29,6 @@ class Project{
     }
     // Funktion för att lägga till en kurs
     public function addProject($title, $project_desc, $image, $url){
-        /*
-        $data = [
-            'code' => 'test',
-            'name' => 'test',
-            'progression' => 'A',
-            'course_syllabus' => 'test',
-        ];
-        */
         // SQL-fråga som skriver till databasen med värden
         $sql = "INSERT INTO projects (title, project_desc, image,url)
         VALUES ('$title', '$project_desc','$image','$url')";

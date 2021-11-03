@@ -29,7 +29,6 @@ class Education{
     }
     // Funktion för att lägga till en kurs
     public function addEducation($edu_name, $program_name, $start_year, $end_year){
-
         // SQL-fråga som skriver till databasen med värden
         $sql = "INSERT INTO education (edu_name, program_name, start_year, end_year)
         VALUES ('$edu_name', '$program_name','$start_year','$end_year')";

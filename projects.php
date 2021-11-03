@@ -39,15 +39,16 @@
             break;
             
         case "POST":
-            http_response_code(201); // Skapat
-        
-            if(!($place && $project_desc && $image && $url)){
+            
+            if(!($title && $project_desc && $image && $url)){
                 $response = array("Message" => "Alla fält måste skickas med"); 
+                http_response_code(419); // Saknar vissa argument
             }
 
             else{
                 $project->addProject($title, $project_desc, $image, $url);
                 $response = array("Message" => "Project Created"); 
+                http_response_code(201); // Skapat
             }
 
             break;
@@ -60,8 +61,9 @@
             }
             else{
                 // Om id finns så kallas nedanstående funktion och meddelande skrivs ut till användaren
-                if(!($place && $project_desc && $image && $url)){
+                if(!($title && $project_desc && $image && $url)){
                     $response = array("Message" => "Alla fält måste skickas med"); 
+                    http_response_code(419); // Saknar vissa argument
                 }
                 else {
                     $project->updateProject($id, $title, $project_desc ,$image,$url);
